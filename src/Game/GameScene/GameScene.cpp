@@ -130,66 +130,12 @@ namespace gameScene
 		static const Color bckgColor = BLACK;
 
 		static const int maxButtons = 3;
-		static const button::Button buttonsConfig[maxButtons] =
-		{
-			//Button1
-			{										//Body
-				{
-					60.0f,							//Width	
-					25.0f,							//Height
-					{400.0f, 500.0f}				//Pos
-				},
-			//Text
-{
-	{0.0f,0.0f},					//Pos
-	"Play",							//Text
-	30,								//FontSize
-	2,								//Spacing
-	WHITE							//Color
-},
-
-RED,								//Color
-false								//isPressed
-},
-
-
-{
-	{
-		105.0f,
-		25.0f,
-		{500.0f, 500.0f}
-	},
-
-	{
-		{0.0f,0.0f},
-		"Credits",
-		30,
-		2,
-		WHITE
-	},
-
-	RED,
-	false
-},
-//Button1
-			{										//Body
-				{
-					60.0f,							//Width	
-					25.0f,							//Height
-					{50.0f, 50.0f}				//Pos
-				},
-			//Text
-{
-	{0.0f,0.0f},					//Pos
-	"Exit",							//Text
-	30,								//FontSize
-	2,								//Spacing
-	WHITE							//Color
-},
-
-RED,								//Color
-false								//isPressed
-},
+		static const button::Button buttonsConfig[maxButtons] = {{{60.0f,	25.0f,	{400.0f, 500.0f}},
+			{{0.0f,0.0f},"Play",30,	2, WHITE}, RED, false},
+			{{105.0f,25.0f,{500.0f, 500.0f}},
+			{{0.0f,0.0f},"Credits",30,2, WHITE},RED,false},
+			{{60.0f,25.0f,{50.0f, 50.0f}},
+			{{0.0f,0.0f},"Exit",30,2,WHITE},RED,false},
 		};
 
 		static void update(GameScene& currentScene);
@@ -315,7 +261,7 @@ false								//isPressed
 
 		//Entitites
 		static bird::Bird bird = bird::init();
-		static obstacle::Obstacle obstacle = obstacle::init(100.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
+		static obstacle::Obstacle obstacle = obstacle::init(65.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
 		static background::BackgroundElement background[background::backgroundElements] = {};
 
 		static const Color bckgColor = BLACK;
