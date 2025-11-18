@@ -260,7 +260,8 @@ namespace gameScene
 		}
 
 		//Entitites
-		static bird::Bird bird = bird::init();
+		static bird::Bird bird = bird::init(KEY_SPACE);
+		static bird::Bird bird2 = bird::init(KEY_UP);
 		static obstacle::Obstacle obstacle = obstacle::init(65.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
 		static background::BackgroundElement background[background::backgroundElements] = {};
 
@@ -268,12 +269,24 @@ namespace gameScene
 
 		static void update(float delta, GameScene& currentScene)
 		{
-			if (!bird.hasLost)
+			obstacle::update(obstacle, bird, delta);
+			obstacle::update(obstacle, bird2, delta);
+			background::update(background, delta);
+
+			if (!bird.hasLost || !bird2.hasLost)
 			{
-				bird::update(bird, delta);
-				obstacle::update(obstacle, bird, delta);
-				background::update(background, delta);
+				
+				if (!bird.hasLost)
+				{
+					bird::update(bird, delta);
+					
+				}
+				if (!bird2.hasLost)
+				{
+					bird::update(bird2, delta);
+				}
 			}
+			
 			else
 			{
 				lost::update(currentScene);
@@ -285,12 +298,20 @@ namespace gameScene
 			BeginDrawing();
 			ClearBackground(bckgColor);
 
-			if (!bird.hasLost)
+			if (!bird.hasLost || !bird2.hasLost)
 			{
 				background::draw(background);
-				bird::draw(bird);
 				obstacle::draw(obstacle);
+				if (!bird.hasLost)
+				{
+					bird::draw(bird);
+				}
+				if (!bird2.hasLost)
+				{
+					bird::draw(bird2);
+				}
 			}
+
 			else
 			{
 				lost::draw();
@@ -316,6 +337,7 @@ namespace gameScene
 		static void resetGame()
 		{
 			bird::reset(bird);
+			bird::reset(bird2);
 			obstacle::reset(obstacle);
 			background::reset(background);
 		}
