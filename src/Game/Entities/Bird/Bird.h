@@ -13,9 +13,11 @@ namespace bird
 		Color color = {};
 		Vector2 velocity = {};
 		bool hasLost = false;
+		KeyboardKey jumpKey;
+		
 	};
 
-	Bird init();
+	Bird init(KeyboardKey birdKey);
 	void reset(Bird& bird);
 	void update(Bird& bird, float delta);
 	void draw(Bird bird);

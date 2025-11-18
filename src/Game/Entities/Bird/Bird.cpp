@@ -12,7 +12,6 @@ namespace bird
 	static const float birdSpeed = 300.0f;
 	static const float birdFallSpeed = 150000.0f;
 	static const float birdFallSpeedCap = 1200.0f;
-	static const KeyboardKey jumpKey = KEY_SPACE;
 	static const Color birdIniColor = WHITE;
 	static const Vector2 birdHitboxIniPos = { 200.0f, 0.0f };
 	static const float birdHitboxIniRadius = 20.0f;
@@ -36,7 +35,7 @@ namespace bird
 			bird.velocity.y += toAdd * delta;
 		}
 
-		if (IsKeyPressed(jumpKey))
+		if (IsKeyPressed(bird.jumpKey))
 		{
 			bird.velocity.y = 0;
 			bird.velocity.y = jumpSpeed;
@@ -47,7 +46,7 @@ namespace bird
 		outBounds(bird);
 	}
 
-	Bird init()
+	Bird init(KeyboardKey birdKey)
 	{
 		Bird bird;
 
@@ -56,7 +55,8 @@ namespace bird
 		bird.color = birdIniColor;
 		bird.velocity = {};
 		bird.hasLost = false;
-
+		bird.jumpKey = birdKey;
+		//bird.birdName = birdName;
 		return bird;
 	}
 
@@ -74,6 +74,7 @@ namespace bird
 
 	void draw(Bird bird)
 	{
+		
 		DrawCircle(static_cast<int>(bird.hitbox.pos.x), static_cast<int>(bird.hitbox.pos.y), bird.hitbox.radius, bird.color);
 	}
 
