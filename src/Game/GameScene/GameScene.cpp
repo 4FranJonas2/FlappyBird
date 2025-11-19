@@ -13,7 +13,8 @@ namespace gameScene
 		enum class MainMenuScenes
 		{
 			MainMenu = -1,
-			Play,
+			OnePlayer,
+			TwoPlayers,
 			Credits,
 			Exit
 		};
@@ -129,12 +130,19 @@ namespace gameScene
 
 		static const Color bckgColor = BLACK;
 
-		static const int maxButtons = 3;
-		static const button::Button buttonsConfig[maxButtons] = {{{60.0f,	25.0f,	{400.0f, 500.0f}},
-			{{0.0f,0.0f},"Play",30,	2, WHITE}, RED, false},
-			{{105.0f,25.0f,{500.0f, 500.0f}},
+		static const int maxButtons = 4;
+		static const button::Button buttonsConfig[maxButtons] = 
+		{
+			{{115.0f,25.0f,	{450.0f, 200.0f}},
+			{{0.0f,0.0f},"1 Player",30,	2, WHITE}, RED, false},
+
+			{{140.0f,25.0f,	{440.0f, 300.0f}},
+			{{0.0f,0.0f},"2 Players",30,	2, WHITE}, RED, false},
+
+			{{105.0f,25.0f,{460.0f, 500.0f}},
 			{{0.0f,0.0f},"Credits",30,2, WHITE},RED,false},
-			{{60.0f,25.0f,{50.0f, 50.0f}},
+
+			{{60.0f,25.0f,{50.0f, 700.0f}},
 			{{0.0f,0.0f},"Exit",30,2,WHITE},RED,false},
 		};
 
@@ -148,7 +156,8 @@ namespace gameScene
 		{
 			initButtons(0),
 			initButtons(1),
-			initButtons(2)
+			initButtons(2),
+			initButtons(3)
 		};
 
 		static void mainMenuScene(GameScene& currentScene)
@@ -178,9 +187,13 @@ namespace gameScene
 		{
 			updateButtons();
 
-			if (buttons[static_cast<int>(MainMenuScenes::Play)].isPressed)
+			if (buttons[static_cast<int>(MainMenuScenes::OnePlayer)].isPressed)
 			{
-				currentGameScene = GameScene::Playing;
+				currentGameScene = GameScene::OnePlayer;
+			}
+			else if (buttons[static_cast<int>(MainMenuScenes::TwoPlayers)].isPressed)
+			{
+				currentGameScene = GameScene::TwoPlayers;
 			}
 			else if (buttons[static_cast<int>(MainMenuScenes::Credits)].isPressed)
 			{
@@ -198,7 +211,7 @@ namespace gameScene
 			ClearBackground(bckgColor);
 
 			drawButtons();
-			DrawText("V0.3", screen::screenWidth - 100, screen::screenHeight - 100, 25, WHITE);
+			DrawText("V0.4", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
 
 			EndDrawing();
 		}
@@ -250,7 +263,7 @@ namespace gameScene
 		};
 
 		static void update(float delta, GameScene& currentScene);
-		static void draw();
+		static void draw(GameScene currentScene);
 		static void resetGame();
 
 		namespace lost
@@ -269,53 +282,92 @@ namespace gameScene
 
 		static void update(float delta, GameScene& currentScene)
 		{
-			obstacle::update(obstacle, bird, delta);
-			obstacle::update(obstacle, bird2, delta);
-			background::update(background, delta);
-
-			if (!bird.hasLost || !bird2.hasLost)
+			if (currentScene == gameScene::GameScene::OnePlayer)
 			{
-				
 				if (!bird.hasLost)
 				{
+					obstacle::update(obstacle, bird, delta);
+					background::update(background, delta);
 					bird::update(bird, delta);
-					
 				}
-				if (!bird2.hasLost)
+				else
 				{
-					bird::update(bird2, delta);
+					lost::update(currentScene);
 				}
 			}
-			
-			else
+
+			if (currentScene == gameScene::GameScene::TwoPlayers)
 			{
-				lost::update(currentScene);
+				if (!bird.hasLost || !bird2.hasLost)
+				{
+					obstacle::update(obstacle, bird, delta);
+					obstacle::update(obstacle, bird2, delta);
+					background::update(background, delta);
+
+					if (!bird.hasLost)
+					{
+						bird::update(bird, delta);
+					}
+
+					if (!bird2.hasLost)
+					{
+						bird::update(bird2, delta);
+					}
+				}
+				else
+				{
+					lost::update(currentScene);
+				}
 			}
 		}
 
-		static void draw()
+		static void draw(GameScene currentScene)
 		{
 			BeginDrawing();
 			ClearBackground(bckgColor);
 
-			if (!bird.hasLost || !bird2.hasLost)
+			if (currentScene == gameScene::GameScene::OnePlayer)
 			{
-				background::draw(background);
-				obstacle::draw(obstacle);
 				if (!bird.hasLost)
 				{
+					background::draw(background);
+					obstacle::draw(obstacle);
 					bird::draw(bird);
 				}
-				if (!bird2.hasLost)
+
+				else
 				{
-					bird::draw(bird2);
+					lost::draw();
 				}
 			}
 
-			else
+			if (currentScene == gameScene::GameScene::TwoPlayers)
 			{
-				lost::draw();
+				if (!bird.hasLost || !bird2.hasLost)
+				{
+					background::draw(background);
+					obstacle::draw(obstacle);
+
+					if (!bird.hasLost)
+					{
+						bird::draw(bird);
+					}
+					if (!bird2.hasLost)
+					{
+						bird::draw(bird2);
+					}
+				}
+
+				else
+				{
+					lost::draw();
+				}
 			}
+
+			//else
+			//{
+			//	lost::draw();
+			//}
 
 			EndDrawing();
 		}
@@ -331,7 +383,7 @@ namespace gameScene
 		void playing(float delta, GameScene& currentScene)
 		{
 			update(delta, currentScene);
-			draw();
+			draw(currentScene);
 		}
 
 		static void resetGame()
@@ -353,6 +405,7 @@ namespace gameScene
 
 				if (IsKeyDown(KEY_E))
 				{
+					resetGame();
 					currentScene = GameScene::MainMenu;
 				}
 			}

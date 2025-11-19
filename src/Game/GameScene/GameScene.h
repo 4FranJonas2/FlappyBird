@@ -5,7 +5,8 @@ namespace gameScene
 	enum class GameScene
 	{
 		MainMenu,
-		Playing,
+		OnePlayer,
+		TwoPlayers,
 		Exit
 	};
 
