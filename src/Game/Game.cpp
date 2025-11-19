@@ -30,7 +30,10 @@ namespace game
 			case gameScene::GameScene::MainMenu:
 				mainMenu::mainMenu(currentScene);
 				break;
-			case gameScene::GameScene::Playing:
+			case gameScene::GameScene::OnePlayer:
+				playing::playing(delta, currentScene);
+				break;
+			case gameScene::GameScene::TwoPlayers:
 				playing::playing(delta, currentScene);
 				break;
 			default:
