@@ -28,7 +28,7 @@ namespace gameScene
 			static const button::Button backButtonConfig =
 			{
 				{
-					60.0f,							//Width	
+					70.0f,							//Width	
 					25.0f,							//Height
 					{300.0f, 600.0f}				//Pos
 				},
@@ -45,16 +45,24 @@ namespace gameScene
 				false								//isPressed
 			};
 
-			static const int maxCreditsLines = 1;
+			static const int maxCreditsLines = 2;
 			static const text::Text creditsLines[maxCreditsLines] =
 			{
 				//Line1
 {
-				{425, 350},								//Pos
+	            {425, 350},								//Pos
 				"Agustin Laure",						//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
 				WHITE									//Color
+},
+
+{
+				{410, 450},								//Pos
+				"Jonas Francisco",						//Text
+				25.0f,									//FontSize
+				2.0f,									//Spacing
+				WHITE
 }
 			};
 
@@ -364,11 +372,6 @@ namespace gameScene
 				}
 			}
 
-			//else
-			//{
-			//	lost::draw();
-			//}
-
 			EndDrawing();
 		}
 
@@ -405,7 +408,7 @@ namespace gameScene
 
 				if (IsKeyDown(KEY_E))
 				{
-					resetGame();
+
 					currentScene = GameScene::MainMenu;
 				}
 			}
