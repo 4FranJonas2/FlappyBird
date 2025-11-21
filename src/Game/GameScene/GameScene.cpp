@@ -219,7 +219,7 @@ namespace gameScene
 			ClearBackground(bckgColor);
 
 			drawButtons();
-			DrawText("V0.4", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
+			DrawText("V1.0", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
 
 			EndDrawing();
 		}
