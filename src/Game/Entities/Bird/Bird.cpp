@@ -12,7 +12,6 @@ namespace bird
 	static const float birdSpeed = 300.0f;
 	static const float birdFallSpeed = 150000.0f;
 	static const float birdFallSpeedCap = 1200.0f;
-	static const Color birdIniColor = WHITE;
 	static const Vector2 birdHitboxIniPos = { 200.0f, 0.0f };
 	static const float birdHitboxIniRadius = 20.0f;
 	static const Vector2 birdIniDir = { 0.05f,0 };
@@ -46,13 +45,13 @@ namespace bird
 		outBounds(bird);
 	}
 
-	Bird init(KeyboardKey birdKey)
+	Bird init(KeyboardKey birdKey, Color playerColor)
 	{
 		Bird bird;
 
 		bird.hitbox.pos = birdHitboxIniPos;
 		bird.hitbox.radius = birdHitboxIniRadius;
-		bird.color = birdIniColor;
+		bird.color = playerColor;
 		bird.velocity = {};
 		bird.hasLost = false;
 		bird.jumpKey = birdKey;

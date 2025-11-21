@@ -17,7 +17,7 @@ namespace bird
 		
 	};
 
-	Bird init(KeyboardKey birdKey);
+	Bird init(KeyboardKey birdKey, Color playerColor);
 	void reset(Bird& bird);
 	void update(Bird& bird, float delta);
 	void draw(Bird bird);
