@@ -7,6 +7,7 @@ namespace gameScene
 		MainMenu,
 		OnePlayer,
 		TwoPlayers,
+		Pause,
 		Exit
 	};
 
