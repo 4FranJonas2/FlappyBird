@@ -110,12 +110,6 @@
     <ClInclude Include="src\Game\Game.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Entities\Bird\Bird.h">
-      <Filter>src\Game\Entities\Bird</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\GameScene\GameScene.h">
-      <Filter>src\Game\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Entities\Obstacle\Obstacle.h">
       <Filter>src\Game\Entities\Obstacle</Filter>
     </ClInclude>
@@ -124,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\Sprite\Sprite.h">
       <Filter>src\Game\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Entities\Bird\Bird.h">
+      <Filter>src\Game\Entities\Bird</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameScene\GameScene.h">
+      <Filter>src\Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
