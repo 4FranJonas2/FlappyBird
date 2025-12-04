@@ -36,6 +36,9 @@ namespace game
 			case gameScene::GameScene::TwoPlayers:
 				playing::playing(delta, currentScene);
 				break;
+			case gameScene::GameScene::Pause:
+				playing::playing(delta, currentScene);
+				break;
 			default:
 				break;
 			}
