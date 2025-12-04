@@ -1,5 +1,9 @@
 #pragma once
 
+#include "raylib.h"
+
+#include "Game/Entities/Bird/Bird.h"
+
 namespace gameScene
 {
 	enum class GameScene

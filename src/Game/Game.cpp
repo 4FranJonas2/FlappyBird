@@ -12,6 +12,7 @@ namespace game
 	static bool isGameRunning = true;
 	static float delta = 0.0f;
 
+
 	gameScene::GameScene currentScene = GameScene::MainMenu;
 
 	static void game();
@@ -20,8 +21,8 @@ namespace game
 	{
 		InitWindow(screen::screenWidth, screen::screenHeight, screen::windowName.c_str());
 		playing::init();
-		
-		while (!WindowShouldClose() && currentScene !=GameScene::Exit)
+
+		while (!WindowShouldClose() && currentScene != GameScene::Exit)
 		{
 			delta = GetFrameTime();
 
@@ -44,7 +45,7 @@ namespace game
 			}
 		}
 	}
-	
+
 	void runGame()
 	{
 		game();

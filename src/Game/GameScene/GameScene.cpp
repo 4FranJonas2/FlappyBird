@@ -8,7 +8,6 @@
 
 namespace gameScene
 {
-
 	namespace mainMenu
 	{
 		enum class MainMenuScenes
@@ -285,7 +284,7 @@ namespace gameScene
 
 			{{95.0f,25.0f,{470.0f, 500.0f}},
 			{{0.0f,0.0f},"Reglas",30,2, WHITE},RED,false},
-			
+
 			{{125.0f,25.0f,{455.0f, 600.0f}},
 			{{0.0f,0.0f},"Creditos",30,2, WHITE},RED,false},
 
@@ -367,7 +366,7 @@ namespace gameScene
 			ClearBackground(bckgColor);
 
 			drawButtons();
-			DrawText("Flappy Bird", 400,  50, 40, WHITE);
+			DrawText("Flappy Bird", 400, 50, 40, WHITE);
 			DrawText("V1.0", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
 
 			EndDrawing();
@@ -438,7 +437,7 @@ namespace gameScene
 			2.0f,																	//Spacing
 			WHITE																	//Color
 		};
-		
+
 		static const text::Text pauseContinue =
 		{
 			{215, 500},																//Pos
@@ -464,8 +463,7 @@ namespace gameScene
 		}
 
 		//Entitites
-		static bird::Bird bird = bird::init(KEY_SPACE, RED);
-		static bird::Bird bird2 = bird::init(KEY_UP, BLUE);
+
 		static obstacle::Obstacle obstacle = obstacle::init(65.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, RED);
 		static background::BackgroundElement background[background::backgroundElements] = {};
 
@@ -681,7 +679,7 @@ namespace gameScene
 				}
 
 				DrawText(pauseTitle.text.c_str(), static_cast<int>(pauseTitle.pos.x), static_cast<int>(pauseTitle.pos.y), static_cast<int>(pauseTitle.fontSize), pauseTitle.color);
-				
+
 				DrawText(loseText.text.c_str(), static_cast<int>(loseText.pos.x), static_cast<int>(loseText.pos.y), static_cast<int>(loseText.fontSize), loseText.color);
 
 				DrawText(pauseContinue.text.c_str(), static_cast<int>(pauseContinue.pos.x), static_cast<int>(pauseContinue.pos.y), static_cast<int>(pauseContinue.fontSize), pauseContinue.color);

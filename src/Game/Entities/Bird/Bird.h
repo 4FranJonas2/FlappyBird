@@ -14,12 +14,12 @@ namespace bird
 		Vector2 velocity = {};
 		bool hasLost = false;
 		KeyboardKey jumpKey;
-		
 	};
 
 	Bird init(KeyboardKey birdKey, Color playerColor);
 	void reset(Bird& bird);
 	void update(Bird& bird, float delta);
-	void draw(Bird bird);
+	void draw(Bird& bird);
 	void outBounds(Bird& bird);
+	void unloadTexture(Texture2D playerSprite);
 }

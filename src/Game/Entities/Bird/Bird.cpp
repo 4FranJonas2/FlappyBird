@@ -55,7 +55,7 @@ namespace bird
 		bird.velocity = {};
 		bird.hasLost = false;
 		bird.jumpKey = birdKey;
-		//bird.birdName = birdName;
+		
 		return bird;
 	}
 
@@ -71,10 +71,10 @@ namespace bird
 		move(bird, delta);
 	}
 
-	void draw(Bird bird)
+	void draw(Bird& bird)
 	{
-		
 		DrawCircle(static_cast<int>(bird.hitbox.pos.x), static_cast<int>(bird.hitbox.pos.y), bird.hitbox.radius, bird.color);
+		//DrawText(TextFormat("LIVES: %i", player.lives), 50, 30, 20, WHITE);
 	}
 
 	void outBounds(Bird& bird)
@@ -88,5 +88,10 @@ namespace bird
 			bird.hitbox.pos.y = 0.f + ceilingOffset;
 			bird.velocity.y = 0.0f;
 		}
+	}
+
+	void unloadTexture(Texture2D playerSprite)
+	{
+		UnloadTexture(playerSprite);
 	}
 }
