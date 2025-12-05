@@ -74,7 +74,6 @@ namespace bird
 	void draw(Bird& bird)
 	{
 		DrawCircle(static_cast<int>(bird.hitbox.pos.x), static_cast<int>(bird.hitbox.pos.y), bird.hitbox.radius, bird.color);
-		//DrawText(TextFormat("LIVES: %i", player.lives), 50, 30, 20, WHITE);
 	}
 
 	void outBounds(Bird& bird)

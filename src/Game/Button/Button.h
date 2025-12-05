@@ -18,4 +18,3 @@ namespace button
 	void update(Button& button);
 	void draw(Button button);
 }
-

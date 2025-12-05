@@ -77,17 +77,27 @@ namespace obstacle
 
 		obstacle.upperHitbox.pos = { obstacle.pos.x, obstacle.pos.y - distanceBetweenParts };
 		obstacle.lowerHitBox.pos = { obstacle.pos.x, obstacle.pos.y + distanceBetweenParts };
-		
+		 
 		outBounds(obstacle);
 	}
 
 	static void outBounds(Obstacle& obstacle)
 	{
+		float auxPosCorrection = 50.0f;
+
 		if (obstacle.pos.x <= 0)
 		{
 			obstacle.pos.x = screen::screenWidth;
-
 			obstacle.pos.y = static_cast<float>(GetRandomValue(static_cast<int>(distanceBetweenParts/2), static_cast<int>(screen::screenHeight - distanceBetweenParts / 2)));
+
+			if (obstacle.pos.y >= screen::screenHeight)
+			{
+				obstacle.pos.y -= auxPosCorrection;
+			}
+			if (obstacle.pos.y <= 0)
+			{
+				obstacle.pos.y += auxPosCorrection;
+			}
 		}
 	}
 

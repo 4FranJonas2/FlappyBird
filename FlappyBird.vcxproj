@@ -28,6 +28,7 @@
     <ClCompile Include="src\Game\Math\Form\Form.cpp" />
     <ClCompile Include="src\Game\Math\Vector\Vector.cpp" />
     <ClCompile Include="src\Game\Screen\Screen.cpp" />
+    <ClCompile Include="src\Game\Sound\audioManager.cpp" />
     <ClCompile Include="src\Game\Sprite\Sprite.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -41,6 +42,7 @@
     <ClInclude Include="src\Game\Math\Form\Form.h" />
     <ClInclude Include="src\Game\Math\Vector\Vector.h" />
     <ClInclude Include="src\Game\Screen\Screen.h" />
+    <ClInclude Include="src\Game\Sound\audioManager.h" />
     <ClInclude Include="src\Game\Sprite\Sprite.h" />
     <ClInclude Include="src\Game\Text\Text.h" />
   </ItemGroup>

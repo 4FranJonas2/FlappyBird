@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "Game/Entities/Bird/Bird.h"
+#include "Game/Sound/audioManager.h"
 
 namespace gameScene
 {
@@ -26,4 +27,3 @@ namespace gameScene
 		void playing(float delta, GameScene& currentScene);
 	}
 }
-

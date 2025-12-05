@@ -1,6 +1,5 @@
 #include "Game/GameScene/GameScene.h"
 
-#include "Game/Entities/Bird/Bird.h"
 #include "Game/Entities/Obstacle/Obstacle.h"
 #include "Game/Screen/Screen.h"
 #include "Game/Button/Button.h"
@@ -36,7 +35,7 @@ namespace gameScene
 				//Text
 				{
 					{0.0f,0.0f},					//Pos
-					"Atras",							//Text
+					"Atras",						//Text
 					30,								//FontSize
 					2,								//Spacing
 					WHITE							//Color
@@ -46,32 +45,34 @@ namespace gameScene
 				false								//isPressed
 			};
 
-			static const int maxCreditsLines = 3;
+			static const int maxCreditsLines = 4;
 			static const text::Text creditsLines[maxCreditsLines] =
 			{
 				//Line1
 				{
-				{405, 80},								//Pos
-				"Creditos",						//Text
+				{360, 250},								//Pos
+				"Desarrolladores",						//Text
+				35.0f,									//FontSize
+				2.0f,									//Spacing
+				WHITE},									//Color
+
+				{{405, 80},								//Pos
+				"Creditos",								//Text
 				55.0f,									//FontSize
 				2.0f,									//Spacing
-				WHITE									//Color
-},
-{
-				{425, 350},								//Pos
+				WHITE},									//Color
+
+				{{425, 350},							//Pos
 				"Agustin Laure",						//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
-				WHITE									//Color
-},
+				WHITE},									//Color
 
-{
-				{410, 450},								//Pos
+				{{410, 450},							//Pos
 				"Jonas Francisco",						//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
-				WHITE
-}
+				WHITE}
 			};
 
 			static void creditsScene();
@@ -158,7 +159,7 @@ namespace gameScene
 				//Text
 				{
 					{0.0f,0.0f},					//Pos
-					"Atras",							//Text
+					"Atras",						//Text
 					30,								//FontSize
 					2,								//Spacing
 					WHITE							//Color
@@ -173,32 +174,31 @@ namespace gameScene
 			{
 				{
 				{415, 80},								//Pos
-				"Reglas",						//Text
+				"Reglas",						        //Text
 				55.0f,									//FontSize
 				2.0f,									//Spacing
 				WHITE},
 				//Line1
-{
-				{145, 200},								//Pos
-				"Jugador 1 (pajaro xxxx) use BARRA ESPACIADORA para saltar",						//Text
+
+				{{145, 200},								//Pos
+				"Jugador 1 (Bola Roja) use BARRA ESPACIADORA para saltar",//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
 				WHITE},
 
-{
-				{165, 300},								//Pos
-				"Jugador 2 (pajaro xxxx) use FLECHA ARRIBA para saltar",						//Text
+
+				{{165, 300},								//Pos
+				"Jugador 2 (Bola Azul) use FLECHA ARRIBA para saltar",//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
 				WHITE},
 
-{
-				{105, 400},								//Pos
-				"Salte para evitar los obstaculos y sobreviva el mayor tiempo posible",						//Text
+
+				{{105, 400},								//Pos
+				"Salte para evitar los obstaculos y sobreviva el mayor tiempo posible",	//Text
 				25.0f,									//FontSize
 				2.0f,									//Spacing
-				WHITE
-}
+				WHITE}
 			};
 
 			static void rulesScene();
@@ -337,6 +337,7 @@ namespace gameScene
 		static void update(GameScene& currentGameScene)
 		{
 			updateButtons();
+			gameAudio::UpdateAudio();
 
 			if (buttons[static_cast<int>(MainMenuScenes::OnePlayer)].isPressed)
 			{
@@ -367,7 +368,7 @@ namespace gameScene
 
 			drawButtons();
 			DrawText("Flappy Bird", 400, 50, 40, WHITE);
-			DrawText("V1.0", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
+			DrawText("V2.0", screen::screenWidth - 100, screen::screenHeight - 50, 25, WHITE);
 
 			EndDrawing();
 		}
@@ -464,6 +465,8 @@ namespace gameScene
 
 		//Entitites
 
+		bird::Bird bird = bird::init(KEY_SPACE, RED);
+		bird::Bird bird2 = bird::init(KEY_UP, BLUE);
 		static obstacle::Obstacle obstacle = obstacle::init(65.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, RED);
 		static background::BackgroundElement background[background::backgroundElements] = {};
 
@@ -471,7 +474,6 @@ namespace gameScene
 
 		static void update(float delta, GameScene& currentScene)
 		{
-
 			if (currentScene == gameScene::GameScene::OnePlayer)
 			{
 				if (!bird.hasLost)

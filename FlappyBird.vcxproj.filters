@@ -55,6 +55,9 @@
     <Filter Include="src\Game\Sprite">
       <UniqueIdentifier>{046393f6-f591-46c0-9e5d-8fa1dffe3ab5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\sound">
+      <UniqueIdentifier>{84cc2669-8db6-4ef9-864d-126bc769fda0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -90,6 +93,9 @@
     <ClCompile Include="src\Game\Sprite\Sprite.cpp">
       <Filter>src\Game\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Sound\audioManager.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Math\Form\Form.h">
@@ -124,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameScene\GameScene.h">
       <Filter>src\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Sound\audioManager.h">
+      <Filter>src\sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
