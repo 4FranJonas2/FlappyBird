@@ -12,7 +12,6 @@ namespace game
 	static bool isGameRunning = true;
 	static float delta = 0.0f;
 
-
 	gameScene::GameScene currentScene = GameScene::MainMenu;
 
 	static void game();
@@ -21,6 +20,9 @@ namespace game
 	{
 		InitWindow(screen::screenWidth, screen::screenHeight, screen::windowName.c_str());
 		playing::init();
+		InitAudioDevice();
+		
+		gameAudio::InitAudio();
 
 		while (!WindowShouldClose() && currentScene != GameScene::Exit)
 		{
@@ -44,6 +46,8 @@ namespace game
 				break;
 			}
 		}
+
+		gameAudio::UnloadAudio();
 	}
 
 	void runGame()
