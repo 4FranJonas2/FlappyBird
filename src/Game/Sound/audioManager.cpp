@@ -1,29 +1,30 @@
 #include "audioManager.h"
 
-namespace aracnoids
+namespace gameAudio
 {
-	void InitAudio(AudioManager& audio)
+	AudioManager audio;
+
+	void InitAudio()
 	{
+		float musicVolume = 0.5f;
+		
 		audio.menuMusic = LoadMusicStream("res/Audio/Nighttime-Escape_LoFi.mp3");
 		audio.gameplayMusic = LoadMusicStream("res/Audio/Nighttime-Escape.mp3");
-
-		audio.clickSound = LoadSound("res/Audio/ClickButton.wav");
-		audio.overSound = LoadSound("res/Audio/OverButton.wav");
-		audio.shootSound = LoadSound("res/Audio/Shoot4.wav");
-		audio.enemyDestroySound = LoadSound("res/Audio/Boom3.wav");
-		audio.loseLifeSound = LoadSound("res/Audio/Hit16.wav");
+		
+		SetMusicVolume(audio.menuMusic, musicVolume);
+		SetMusicVolume(audio.gameplayMusic, musicVolume);
 
 		audio.currentMusic = MusicType::MENU;
 		PlayMusicStream(audio.menuMusic);
 	}
 
-	void UpdateAudio(AudioManager& audio)
+	void UpdateAudio()
 	{
 		UpdateMusicStream(audio.menuMusic);
 		UpdateMusicStream(audio.gameplayMusic);
 	}
 
-	void SwitchMusic(AudioManager& audio, MusicType newMusic)
+	void SwitchMusic(MusicType newMusic)
 	{
 		float timePlayed = 0.0f;
 
@@ -60,7 +61,7 @@ namespace aracnoids
 		PlaySound(sfx);
 	}
 
-	void UnloadAudio(AudioManager& audio)
+	void UnloadAudio()
 	{
 		UnloadMusicStream(audio.menuMusic);
 		UnloadMusicStream(audio.gameplayMusic);

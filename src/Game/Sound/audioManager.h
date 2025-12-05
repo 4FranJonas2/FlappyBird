@@ -2,9 +2,7 @@
 
 #include "raylib.h"
 
-#include "../utilities.h"
-
-namespace aracnoids
+namespace gameAudio
 {
 	enum class MusicType
 	{
@@ -25,9 +23,9 @@ namespace aracnoids
 		MusicType currentMusic;
 	};
 
-	void InitAudio(AudioManager& audio);
-	void UpdateAudio(AudioManager& audio);
-	void SwitchMusic(AudioManager& audio, MusicType newMusic);
+	void InitAudio();
+	void UpdateAudio();
+	void SwitchMusic( MusicType newMusic);
 	void PlaySFX( Sound& sfx);
-	void UnloadAudio(AudioManager& audio);
+	void UnloadAudio();
 }
